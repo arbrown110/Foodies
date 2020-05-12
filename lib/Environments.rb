@@ -7,11 +7,12 @@ require 'dotenv'
 Dotenv.load
 
 
-require_relative "./Kichens/API.rb"
-require_relative "./Kichens/CLi.rb"
-require_relative "./Kichens/Dishes.rb"
-require_relative "./Kichens/version.rb"
-require "Foodies/version"
+require_relative "./Kitchens/API"
+require_relative "./Kitchens/CLi"
+require_relative "./Kitchens/Dish"
+require_relative "./Kitchens/version"
+require_relative "./Kitchens/Cusisine"
+
 
 
 
