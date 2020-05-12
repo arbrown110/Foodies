@@ -18,3 +18,6 @@ class API
     
   end
 end  
+
+
+## service file/class.repsonsible for talking to API. ##going to it , talking ,and returning info.
