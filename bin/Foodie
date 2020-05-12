@@ -3,3 +3,6 @@
 
 
 require_relative '../lib/Environments.rb'
+
+CLi = CLi.new
+CLi.run
