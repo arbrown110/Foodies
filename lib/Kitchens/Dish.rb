@@ -1,13 +1,14 @@
 class Dish
 
-  attr_accessor :name, :dish_id , :cuisine , :summary
+  attr_accessor :name, :dish_id , :cuisine , :summary , :similar
 
   @@all = [ ]
   
   def initialize (name:, dish_id:, cuisine:)
     @name = name
-    @dish_id = drink_id
+    @dish_id = dish_id
     @cuisine = cuisine
+    @similar = similar
     @@all << self 
   end
   
