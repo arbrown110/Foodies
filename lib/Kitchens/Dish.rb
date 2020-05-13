@@ -1,6 +1,6 @@
 class Dish
 
-attr_accessor :name, :dish_id , :cuisine , :summary
+  attr_accessor :name, :dish_id , :cuisine , :summary
 
   @@all = [ ]
   
