@@ -3,7 +3,7 @@ class API
   def self.get_list(cuisine)
     
     key = ENV.fetch ('MYSPOON-API-KEY')
-    url: "https://api.spoonacular.com/recipes/#{cuisine}/search?query=number?apiKey=#{ENV.fetch('MYSPOON-API-KEY')}&=10"
+    url = "https://api.spoonacular.com/recipes/#{cuisine}/search?query=number?apiKey=#{ENV.fetch('MYSPOON-API-KEY')}&=10"
      
     response = Net::HTTP.get(URI(url))
     dishes= JSON.parse(response)["results"]
