@@ -17,6 +17,7 @@ class Dish
   end
   def self.find_by_cuisine(cuisine)
     self.all.select {|dish| dish.cuisine == cuisine}
+  end
 end
 
 

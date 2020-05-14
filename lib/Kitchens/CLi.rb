@@ -16,18 +16,20 @@ class Cli
         
         dishes = Cuisine.find_by_cuisine(@cuisine).dishes
         print_dish(dishes)
-    elsif input.to_i > 0 && input.to_i < Cuisine.find_by_cuisine(@cuisine)dishes.length 
+      elsif input.to_i > 0 && input.to_i < Cuisine.find_by_cuisine(@cuisine).length 
+        binding.pry
         dish = Cuisine.find_by_cuisine(@cuisine).dishes[input.to_i - 1]
         #if they put dish go to summary for input
         API.getdishsum(dish) if !dish.summary
+        
         print_dish(dish)
-    elsif input == 'cuisines'
+      elsif input == 'cuisines'
         prompt_cuisine
        
         #if they pick different dish show that summary
-    else
+      else
         puts "what type of food is that? Take another look ."
-    end
+      end
        prompt_user
        input = gets.strip.downcase
     end

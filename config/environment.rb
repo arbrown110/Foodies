@@ -1,18 +1,13 @@
-require "pry"
-require "net/http"
-require "httparty"
-require "json"
-require "dotenv"
+
+require 'bundler/setup'
+Bundler.require
+
+require_rel "../bin"
+
+require_rel "../lib/"
+
+
 Dotenv.load
-
-
-require_relative "./Kitchens/API"
-require_relative "./Kitchens/CLi"
-require_relative "./Kitchens/Dish"
-require_relative "./Kitchens/version"
-require_relative "./Kitchens/Cuisine"
-
-
 
 
 #listing all dependencies
