@@ -6,4 +6,4 @@ require_relative "../config/environment"
 
 
 
-Foodies::CLi.new.run
+CLI.new.run
