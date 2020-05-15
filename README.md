@@ -1,8 +1,10 @@
 # Foodies
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/Foodies`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to Foodies!! This gem will allow you to pick out your next dish for the day. You will be able to choose by cuisine populate a list of dishes in that cuisine and get more information about it.
 
-TODO: Delete this and the text above, and describe your gem
+Enjoy!
+
+
 
 ## Installation
 
@@ -22,7 +24,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To run the program, type ./bin/Foodie
+
+Type in a cuisine you'd like to look up dishes for .To see the list of dishes type "menu" .To see information on a certain dishes, type the number correlating to the dish you want .When you're done, type "exit"
 
 ## Development
 
