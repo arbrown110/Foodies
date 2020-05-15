@@ -1,34 +1,34 @@
 class CLI
 
-  def run 
+  def run
     puts "  "
     puts "WELCOME TO FOODIES !!!!!"
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
-    
+
     prompt_cuisine
     prompt_user
     input = gets.strip.downcase
-    
+
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
 
     while input != 'exit'
       if input == 'menu'
-        
-        dishes = Cuisine.find_by_cuisine(@cuisine).dishes
-        print_dish(dishes)
-        
-        
-        
-      elsif input.to_i > 0 && input.to_i < 7 
-      
+
+        dishes = Cuisine.find_by_cuisine(@cuisine).dish
+        print_dish(dish)
+
+
+
+      elsif input.to_i > 0 && input.to_i < 7
+
         dish = Cuisine.find_by_cuisine(@cuisine).dishes[input.to_i - 1]
         #if they put dish go to summary for input
-        API.getdishsum(dish) if !dish.summ
-        
+        API.getdishsum(dishes) if !dish.sum
+
         print_dish(dish)
       elsif input == 'cuisines'
         prompt_cuisine
-       
+
         #if they pick different dish show that summary
       else
         puts "what type of food is that? Take another look ."
@@ -38,9 +38,9 @@ class CLI
     end
     puts " "
     puts "I don't know about you but I'm full ! See you next time."
-  end  
+  end
   def spacer
-    puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ " 
+    puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
     puts " "
   end
   def print_dishes(dishes)
@@ -52,15 +52,15 @@ class CLI
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
   end
   def print_dish(dish)
-    
+    print_dishes(Cuisine.find_by_cuisine(@cuisine).dish_id)
     # want to be able to have the name {"title"} . {"summary"}
     puts dish.name
-    puts dish.summary
+    puts dish.sum
   end
-  
-  
+
+
   def prompt_cuisine
-    
+
     puts " "
     puts "Enter the type of Cuisine you are craving."
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
@@ -68,7 +68,7 @@ class CLI
     API.get_dishes(@cuisine) if !Cuisine.find_by_cuisine(@cuisine)
     print_dishes(Cuisine.find_by_cuisine(@cuisine).dishes)
   end
-  
+
   def prompt_user
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
     puts " "
@@ -76,14 +76,14 @@ class CLI
     puts " "
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
   end
-  
-end  
-  
-  
-     
-     
-     
-     
-     
-      
+
+end
+
+
+
+
+
+
+
+
 ##input and output to user

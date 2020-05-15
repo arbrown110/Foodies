@@ -1,17 +1,17 @@
 class Dish
 
-  attr_accessor :name, :dish_id , :cuisine , :summary 
+  attr_accessor :name, :dish_id , :cuisine , :sum
 
   @@all = [ ]
-  
-  def initialize (name:, dish_id:, cuisine:)
+
+  def initialize (name:, dish_id:, cuisine:, sum:)
     @name = name
     @dish_id = dish_id
     @cuisine = cuisine
-    @summary = summary
-    @@all << self 
+    @sum = sum
+    @@all << self
   end
-  
+
   def self.all
     @@all
   end
