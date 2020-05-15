@@ -1,9 +1,10 @@
+require 'pry'
 class API 
   
   def self.get_dishes(cuisine)
     
-     key = ENV[MY_SPOON_API_KEY]
-    url = "https://api.spoonacular.com/recipes/#{cuisine}/search?query=number&=10&apiKey=#{key}"
+     key = ENV['MY_SPOON_API_KEY']
+    url = "https://api.spoonacular.com/recipes/complexSearch?cuisine=#{cuisine}&addRecipeInformation=true&offset=0&number=10&apiKey=#{key}"
     
     response = Net::HTTP.get(URI(url))
     dishes= JSON.parse(response)["results"]
@@ -13,12 +14,13 @@ class API
       drink_id = dish_menu["id"]
      new_dish = Dish.new(name: name, dish_id: drink_id, cuisine: cuisine)
       new_cuisine.dishes << new_dish
+      binding.pry
     end
    
   end
   
   def self.getdishsum(dish)
-   key = ENV[MY_SPOON_API_KEY]
+   key = ENV['MY_SPOON_API_KEY']
    url = "https://api.spoonacular.com/recipes/#{dish.dish_id}/#{summary}&apiKey=#{key}"
    response = Net::HTTP.get(URI(url))
    dishmen = JSON.parse(response).first
@@ -26,8 +28,8 @@ class API
   end
  
   def self.similar(dish)
-   key = ENV[MY_SPOON_API_KEY]
-   url ="https://api.spoonacular.com/recipes/#{dish_id}/similar?&number=2=apiKey#{key}"
+   key = ENV['MY_SPOON_API_KEY']
+   url ="https://api.spoonacular.com/recipes/#{dish_id}/similar?&number=3=apiKey#{key}"
    response = Net::HTTP.get(URI(url))
    suggestion= JSON.parse(response)
    dish.dish_id = suggestion["title"]
