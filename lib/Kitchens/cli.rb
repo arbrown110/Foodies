@@ -16,11 +16,14 @@ class CLI
         
         dishes = Cuisine.find_by_cuisine(@cuisine).dishes
         print_dish(dishes)
-      elsif input.to_i > 0 && input.to_i < dishes.length 
-        binding.pry
+        
+        
+        
+      elsif input.to_i > 0 && input.to_i < 7 
+      
         dish = Cuisine.find_by_cuisine(@cuisine).dishes[input.to_i - 1]
         #if they put dish go to summary for input
-        API.getdishsum(dish) if !dish.summary
+        API.getdishsum(dish) if !dish.summ
         
         print_dish(dish)
       elsif input == 'cuisines'
@@ -43,12 +46,14 @@ class CLI
   def print_dishes(dishes)
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
     puts "Here are some  #{@cuisine} dishes."
-    dishes.each.with_index(7) do |dish ,index|
+    dishes.each.with_index(1) do |dish ,index|
       puts "#{index}. #{dish.name}"
     end
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
   end
   def print_dish(dish)
+    
+    # want to be able to have the name {"title"} . {"summary"}
     puts dish.name
     puts dish.summary
   end
@@ -59,7 +64,7 @@ class CLI
     puts " "
     puts "Enter the type of Cuisine you are craving."
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
-    @cruisine = gets.strip.downcase
+    @cuisine = gets.strip.downcase
     API.get_dishes(@cuisine) if !Cuisine.find_by_cuisine(@cuisine)
     print_dishes(Cuisine.find_by_cuisine(@cuisine).dishes)
   end

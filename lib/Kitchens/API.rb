@@ -14,22 +14,24 @@ class API
       drink_id = dish_menu["id"]
      new_dish = Dish.new(name: name, dish_id: drink_id, cuisine: cuisine)
       new_cuisine.dishes << new_dish
-      binding.pry
+      
     end
    
   end
   
   def self.getdishsum(dish)
    key = ENV['MY_SPOON_API_KEY']
-   url = "https://api.spoonacular.com/recipes/#{dish.dish_id}/#{summary}&apiKey=#{key}"
+   url = "https://api.spoonacular.com/recipes/#{dish.dish_id}/summary&apiKey=#{key}"
    response = Net::HTTP.get(URI(url))
+   
+   
    dishmen = JSON.parse(response).first
-   dish.summary = dishmen["summary"]
+   dish.sum = dishmen["summary"]
   end
  
   def self.similar(dish)
    key = ENV['MY_SPOON_API_KEY']
-   url ="https://api.spoonacular.com/recipes/#{dish_id}/similar?&number=3=apiKey#{key}"
+   url ="https://api.spoonacular.com/recipes/#{dish.dish_id}/similar?&number=3=apiKey#{key}"
    response = Net::HTTP.get(URI(url))
    suggestion= JSON.parse(response)
    dish.dish_id = suggestion["title"]
