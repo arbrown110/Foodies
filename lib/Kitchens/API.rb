@@ -12,10 +12,11 @@ class API
 
 
     dishes.each do |dish_menu|
+
       name = dish_menu["title"]
       dish_id = dish_menu["id"]
-      dish_sum = dish_menu["desription"]
-     new_dish = Dish.new(name: name, dish_id: dish_id, cuisine: cuisine , sum: dish_sum)
+      dish_sum = dish_menu["description"]
+      new_dish = Dish.new(name: name, dish_id: dish_id, cuisine: cuisine , sum: dish_sum)
       new_cuisine.dishes << new_dish
 
     end
@@ -24,22 +25,37 @@ class API
 
   def self.getdishsum(dish)
    key = ENV['MY_SPOON_API_KEY']
-   url = "https://api.spoonacular.com/recipes/{id}=#{Dish.dish_id}/summary&apiKey=#{key}"
-   response = Net::HTTP.get(URI(url))
-   binding.pry
+  # binding.pry
+   url = "https://api.spoonacular.com/recipes/#{dish.dish_id}/summary?&apiKey=#{key}"
 
-   dishmen = JSON.parse(response).first
-   binding.pry
-   dish.sum = dishmen("summary")
+
+   response = Net::HTTP.get(URI(url))
+
+
+   dishmen = JSON.parse(response)["summary"]
+
+   #new_plate = Cuisine.new(dish)
+
+
+   #dishmen.each do |dish_sum|
+  #   name = dish_sum["title"]
+  #   plates_id = dish_sum["id"]
+  #   plates_sum = dish_sum["summary"]
+  #  new_plate = Dish.new(name: name, dish_id: dish_id, cuisine: cuisine , sum: dish_sum)
+  #   new_plate.dishes << new_dish
+   #binding.pry
+
+   #dish_summary = dishmen
+   #binding.binding.pry
   end
 
-  def self.similar(dish)
-   key = ENV['MY_SPOON_API_KEY']
-   url ="https://api.spoonacular.com/recipes/#{dish.dish_id}/similar?&number=3=apiKey#{key}"
-   response = Net::HTTP.get(URI(url))
-   suggestion= JSON.parse(response)
-   dish.dish_id = suggestion("title")
-  end
+#  def self.similar(dish)
+#   key = ENV['MY_SPOON_API_KEY']
+#   url ="https://api.spoonacular.com/recipes/#{dish.dish_id}/similar?&number=3=apiKey#{key}"
+#   response = Net::HTTP.get(URI(url))
+#   suggestion= JSON.parse(response)
+#   dish.dish_id = suggestion("title")
+#  end
 
   #def self.hungry(cuisine)
  # key = ENV.fetch('MYSPOON-API-KEY')

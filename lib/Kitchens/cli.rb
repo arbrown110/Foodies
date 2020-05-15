@@ -12,26 +12,28 @@ class CLI
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
 
     while input != 'exit'
+
       if input == 'menu'
 
-        dishes = Cuisine.find_by_cuisine(@cuisine).dish
-        print_dish(dish)
+      dishes = Cuisine.find_by_cuisine(@cuisine).dishes
 
+      print_dishes(dishes)
 
-
-      elsif input.to_i > 0 && input.to_i < 7
+    elsif input.to_i > 0 && input.to_i <= Cuisine.find_by_cuisine(@cuisine).dishes.length
 
         dish = Cuisine.find_by_cuisine(@cuisine).dishes[input.to_i - 1]
         #if they put dish go to summary for input
-        API.getdishsum(dishes) if !dish.sum
+        API.getdishsum(dish) if !dish.sum
 
         print_dish(dish)
+
+
       elsif input == 'cuisines'
         prompt_cuisine
-
+        #binding.pry
         #if they pick different dish show that summary
       else
-        puts "what type of food is that? Take another look ."
+        puts "what number is that? Let's take another look ."
       end
        prompt_user
        input = gets.strip.downcase
@@ -39,23 +41,25 @@ class CLI
     puts " "
     puts "I don't know about you but I'm full ! See you next time."
   end
-  def spacer
-    puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
-    puts " "
-  end
+
   def print_dishes(dishes)
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
     puts "Here are some  #{@cuisine} dishes."
     dishes.each.with_index(1) do |dish ,index|
-      puts "#{index}. #{dish.name}"
+      puts "#{index}. #{dish.name}  #{dish.dish_id}"
     end
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
   end
   def print_dish(dish)
-    print_dishes(Cuisine.find_by_cuisine(@cuisine).dish_id)
+  #  print_dishes(Cuisine.find_by_cuisine(@cuisine).dish_id)
     # want to be able to have the name {"title"} . {"summary"}
+    #dish.each.with_index(1) do |dish ,index|
+    #  puts "#{index}. #{dish.name}  #{dish.dish_id} #{dish.summary}"
     puts dish.name
-    puts dish.sum
+
+  #  binding.pry
+    #ow do I bring in the summary??
+    puts dish
   end
 
 
@@ -76,7 +80,6 @@ class CLI
     puts " "
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
   end
-
 end
 
 
@@ -86,4 +89,7 @@ end
 
 
 
-##input and output to user
+
+
+
+    ##input and output to user
