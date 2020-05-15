@@ -2,9 +2,9 @@ class API
   
   def self.get_list(cuisine)
     
-    key = ENV.fetch('MYSPOON-API-KEY')
+     key = ENV.fetch['MYSPOON-API-KEY']
     url = "https://api.spoonacular.com/recipes/#{cuisine}/search?=#{key}&query=number&=10"
-    
+    binding.pry
     response = Net::HTTP.get(URI(url))
     dishes= JSON.parse(response)["results"]
     new_cuisine = Cuisine.new(cuisine)

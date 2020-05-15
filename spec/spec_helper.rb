@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "dutch_top40"
+require "Foodies"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

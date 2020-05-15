@@ -13,3 +13,5 @@ gem "httparty"
 gem "json"
 gem "dotenv"
 gem "nokogiri"
+
+gem "openssl"
