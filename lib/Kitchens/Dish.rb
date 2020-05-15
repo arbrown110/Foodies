@@ -1,6 +1,6 @@
 class Dish
 
-  attr_accessor :name, :dish_id , :cuisine , :summary , :similar
+  attr_accessor :name, :dish_id , :cuisine , :summary 
 
   @@all = [ ]
   
@@ -8,7 +8,7 @@ class Dish
     @name = name
     @dish_id = dish_id
     @cuisine = cuisine
-    @similar = similar
+    @summary = summary
     @@all << self 
   end
   

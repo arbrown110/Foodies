@@ -60,7 +60,7 @@ class CLI
     puts "Enter the type of Cuisine you are craving."
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
     @cruisine = gets.strip.downcase
-    API.get_list(@cuisine) if !Cuisine.find_by_cuisine(@cuisine)
+    API.get_dishes(@cuisine) if !Cuisine.find_by_cuisine(@cuisine)
     print_cuisines(Cuisine.find_by_cuisine(@cuisine).dishes)
   end
   
