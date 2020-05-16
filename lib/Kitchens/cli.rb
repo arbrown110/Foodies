@@ -52,12 +52,9 @@ class CLI
   end
   def print_dish(dish)
 
-
     puts dish.name
-
     puts "    "
     puts dish.sum
-
   end
 
 
