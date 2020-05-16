@@ -51,15 +51,13 @@ class CLI
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
   end
   def print_dish(dish)
-  #  print_dishes(Cuisine.find_by_cuisine(@cuisine).dish_id)
-    # want to be able to have the name {"title"} . {"summary"}
-    #dish.each.with_index(1) do |dish ,index|
-    #  puts "#{index}. #{dish.name}  #{dish.dish_id} #{dish.summary}"
+
+
     puts dish.name
 
-  #  binding.pry
-    #ow do I bring in the summary??
-    puts dish
+    puts "    "
+    puts dish.sum
+
   end
 
 
