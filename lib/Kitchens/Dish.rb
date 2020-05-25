@@ -18,6 +18,10 @@ class Dish
   def self.find_by_cuisine(cuisine)
     self.all.select {|dish| dish.cuisine == cuisine}
   end
+  
+  def self.sort_by_length
+    self.all.sort_by{|dish| [dish.name.length]}
+  end
 end
 
 
