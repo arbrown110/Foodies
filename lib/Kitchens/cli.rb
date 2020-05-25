@@ -43,7 +43,7 @@ class CLI
   end
 
   def print_dishes(dishes)
-    sorted_dishes = Dishes.sort_by_length
+    sorted_dishes = Dish.sort_by_length
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
     puts "Here are some  #{@cuisine} dishes."
     sorted_dishes.each.with_index(1) do |dish ,index|
